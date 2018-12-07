@@ -3,13 +3,13 @@ class Isogram
 
   def self.isogram?(sentence)
     @verifier = Hash.new(0)
-    verify_sentence(sentence)
+    valid_sentence?(sentence)
   end
 
   class << self
     private
 
-    def verify_sentence(sentence)
+    def valid_sentence?(sentence)
       sentence = sentence.gsub(/[^a-zA-Z]/, '').downcase
       sentence.chars.each do |letter|
         @verifier[letter] += 1

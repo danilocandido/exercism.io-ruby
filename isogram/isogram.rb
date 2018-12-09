@@ -10,10 +10,10 @@ class Isogram
     private
 
     def valid_sentence?(sentence)
-      sentence = sentence.gsub(/[^a-zA-Z]/, '').downcase
+      sentence = sentence.scan(/\w+/).join.downcase
       sentence.chars.each do |letter|
         @verifier[letter] += 1
-        return false && break if @verifier[letter] > 1
+        return false if @verifier[letter] > 1
       end
       true
     end

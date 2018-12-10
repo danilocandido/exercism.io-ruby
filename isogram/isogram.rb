@@ -1,8 +1,5 @@
 class Isogram
-  attr_reader :verifier
-
   def self.isogram?(sentence)
-    @verifier = Hash.new(0)
     valid_sentence?(sentence)
   end
 
@@ -10,10 +7,11 @@ class Isogram
     private
 
     def valid_sentence?(sentence)
+      verifier = Hash.new(0)
       sentence = sentence.scan(/\w+/).join.downcase
       sentence.chars.each do |letter|
-        @verifier[letter] += 1
-        return false if @verifier[letter] > 1
+        verifier[letter] += 1
+        return false if verifier[letter] > 1
       end
       true
     end

@@ -1,7 +1,6 @@
 class Matrix
   def initialize(string)
-    @matrix = []
-    fill_matrix(string)
+    @matrix = fill_matrix(string)
   end
 
   def rows
@@ -15,9 +14,7 @@ class Matrix
   private
 
   def fill_matrix(string)
-    string.split(/\n/).each do |val|
-      @matrix << srt_to_array_of_integers(val)
-    end
+    string.each_line.map { |line| srt_to_array_of_integers(line) }
   end
 
   def srt_to_array_of_integers(string)

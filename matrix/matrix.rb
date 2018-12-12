@@ -1,23 +1,21 @@
 class Matrix
-  def initialize(string)
-    @matrix = fill_matrix(string)
-  end
+  attr_reader :rows
 
-  def rows
-    @matrix
+  def initialize(string)
+    @rows = fill_matrix(string)
   end
 
   def columns
-    @matrix.transpose
+    @rows.transpose
   end
 
   private
 
   def fill_matrix(string)
-    string.each_line.map { |line| srt_to_array_of_integers(line) }
+    string.each_line.map { |line| matrix_collum(line) }
   end
 
-  def srt_to_array_of_integers(string)
-    string.scan(/\d+/).map(&:to_i)
+  def matrix_collum(string)
+    string.split.map(&:to_i)
   end
 end
